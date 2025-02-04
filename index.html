@@ -7,102 +7,188 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="landing">
-
 	<!-- Page Wrapper -->
 	<div id="page-wrapper">
-
 		<!-- Header -->
 		<header id="header" class="alt">
-			<h1>Franz & Svitlana</h1>
+			<h1 id="header-title">Franz & Svitlana</h1>
 			<nav>
-				<a href="#about">Über uns</a>
-				<a href="#details">Детали</a>
-				<a href="#wishlist">Вишлист</a>
-				<a href="#rsvp">RSVP</a>
+				<a href="#about" id="nav-about">О нас</a>
+				<a href="#details" id="nav-details">Детали</a>
+				<a href="#wishlist" id="nav-wishlist">Вишлист</a>
+				<a href="#rsvp" id="nav-rsvp">RSVP</a>
+				<button id="language-toggle">DE</button> <!-- Кнопка для смены языка -->
 			</nav>
 		</header>
-
 		<!-- Banner -->
 		<section id="banner">
 			<div class="inner">
-				<h2>Franz & Svitlana Wedding</h2>
-				<p>14 июня 2025 года | Мюнхен, Германия</p>
-				<p>Мы будем рады видеть вас на нашем особенном дне!</p>
+				<h2 id="banner-title">Franz & Svitlana Wedding</h2>
+				<p id="banner-date">14 июня 2025 года | Мюнхен, Германия</p>
+				<p id="banner-greeting">Мы будем рады видеть вас на нашем особенном дне!</p>
 			</div>
 		</section>
-
 		<!-- About Us -->
 		<section id="about" class="wrapper style1">
 			<div class="inner">
-				<h2>Наша История</h2>
-				<p><strong>Франц:</strong> IT-специалист с любовью к технологиям, путешествиям и кулинарии.</p>
-				<p><strong>Света:</strong> Увлеченная творческая личность, которая любит искусство, природу и танцы.</p>
-				<p>Мы встретились три года назад, и с тех пор наши жизни стали лучше, светлее и счастливее. Теперь мы готовы начать новый этап вместе.</p>
+				<h2 id="about-title">Наша История</h2>
+				<p><strong id="franz-description">Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.</p>
+				<p><strong id="svitlana-description">Света: Увлеченная творческая личность, которая любит искусство, природу и танцы.</p>
+				<p id="about-story">Мы встретились три года назад, и с тех пор наши жизни стали лучше, светлее и счастливее. Теперь мы готовы начать новый этап вместе.</p>
 			</div>
 		</section>
-
 		<!-- Wedding Details -->
 		<section id="details" class="wrapper style2">
 			<div class="inner">
-				<h2>Детали Мероприятия</h2>
+				<h2 id="details-title">Детали Мероприятия</h2>
 				<ul>
-					<li><strong>Дата:</strong> 14 июня 2025 года</li>
-					<li><strong>Место:</strong> Hauptstraße 123, Мюнхен</li>
-					<li><strong>Начало:</strong> 15:00</li>
-					<li><strong>Дресс-код:</strong> Формальный</li>
+					<li><strong id="details-date-label">Дата:</strong> <span id="details-date">14 июня 2025 года</span></li>
+					<li><strong id="details-location-label">Место:</strong> <span id="details-location">Hauptstraße 123, Мюнхен</span></li>
+					<li><strong id="details-time-label">Начало:</strong> <span id="details-time">15:00</span></li>
+					<li><strong id="details-dresscode-label">Дресс-код:</strong> <span id="details-dresscode">Формальный</span></li>
 				</ul>
 			</div>
 		</section>
-
 		<!-- Wishlist -->
 		<section id="wishlist" class="wrapper style3">
 			<div class="inner">
-				<h2>Наш Вишлист</h2>
-				<p>Ваше присутствие — это уже подарок, но если вы хотите нас порадовать:</p>
+				<h2 id="wishlist-title">Наш Вишлист</h2>
+				<p id="wishlist-intro">Ваше присутствие — это уже подарок, но если вы хотите нас порадовать:</p>
 				<ul>
-					<li>Путешествия: ваучеры или помощь в медовом месяце</li>
-					<li>Домашняя техника</li>
-					<li>Благотворительные пожертвования от нашего имени</li>
+					<li id="wishlist-travel">Путешествия: ваучеры или помощь в медовом месяце</li>
+					<li id="wishlist-appliances">Домашняя техника</li>
+					<li id="wishlist-charity">Благотворительные пожертвования от нашего имени</li>
 				</ul>
 			</div>
 		</section>
-
 		<!-- RSVP -->
 		<section id="rsvp" class="wrapper style4">
 			<div class="inner">
-				<h2>RSVP</h2>
-				<p>Пожалуйста, подтвердите свое присутствие:</p>
+				<h2 id="rsvp-title">RSVP</h2>
+				<p id="rsvp-intro">Пожалуйста, подтвердите свое присутствие:</p>
 				<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-					<label for="name">Ваше имя:</label>
+					<label for="name"><span id="rsvp-name-label">Ваше имя:</span></label>
 					<input type="text" id="name" name="name" required>
-
-					<label for="email">Email:</label>
+					<label for="email"><span id="rsvp-email-label">Email:</span></label>
 					<input type="email" id="email" name="email" required>
-
-					<label for="guests">Количество гостей:</label>
+					<label for="guests"><span id="rsvp-guests-label">Количество гостей:</span></label>
 					<input type="number" id="guests" name="guests" required>
-
-					<label for="message">Сообщение:</label>
+					<label for="message"><span id="rsvp-message-label">Сообщение:</span></label>
 					<textarea id="message" name="message" rows="4"></textarea>
-
-					<button type="submit" class="button">Отправить</button>
+					<button type="submit" class="button" id="rsvp-submit-button">Отправить</button>
 				</form>
 			</div>
 		</section>
-
 		<!-- Footer -->
 		<footer id="footer">
 			<ul class="icons">
 				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 			</ul>
-			<p>&copy; 2025 Franz & Svitlana. Все права защищены.</p>
+			<p id="footer-copyright">&copy; 2025 Franz & Svitlana. Все права защищены.</p>
 		</footer>
-
 	</div>
-
 	<!-- Scripts -->
-	<script src="assets/js/main.js"></script>
+	<script>
+		// Переводы
+		const translations = {
+			ru: {
+				"header-title": "Franz & Svitlana",
+				"nav-about": "О нас",
+				"nav-details": "Детали",
+				"nav-wishlist": "Вишлист",
+				"nav-rsvp": "RSVP",
+				"banner-title": "Franz & Svitlana Wedding",
+				"banner-date": "14 июня 2025 года | Мюнхен, Германия",
+				"banner-greeting": "Мы будем рады видеть вас на нашем особенном дне!",
+				"about-title": "Наша История",
+                "franz-description": "Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.",
+                "svitlana-description": "Света: Увлеченная творческая личность, которая любит искусство, природу и танцы",
+				"about-story": "Мы встретились три года назад, и с тех пор наши жизни стали лучше, светлее и счастливее. Теперь мы готовы начать новый этап вместе.",
+				"details-title": "Детали Мероприятия",
+				"details-date-label": "Дата:",
+				"details-date": "14 июня 2025 года",
+				"details-location-label": "Место:",
+				"details-location": "Hauptstraße 123, Мюнхен",
+				"details-time-label": "Начало:",
+				"details-time": "15:00",
+				"details-dresscode-label": "Дресс-код:",
+				"details-dresscode": "Формальный",
+				"wishlist-title": "Наш Вишлист",
+				"wishlist-intro": "Ваше присутствие — это уже подарок, но если вы хотите нас порадовать:",
+				"wishlist-travel": "Путешествия: ваучеры или помощь в медовом месяце",
+				"wishlist-appliances": "Домашняя техника",
+				"wishlist-charity": "Благотворительные пожертвования от нашего имени",
+				"rsvp-title": "RSVP",
+				"rsvp-intro": "Пожалуйста, подтвердите свое присутствие:",
+				"rsvp-name-label": "Ваше имя:",
+				"rsvp-email-label": "Email:",
+				"rsvp-guests-label": "Количество гостей:",
+				"rsvp-message-label": "Сообщение:",
+				"rsvp-submit-button": "Отправить",
+				"footer-copyright": "&copy; 2025 Franz & Svitlana. Все права защищены."
+			},
+			de: {
+				"header-title": "Franz & Svitlana",
+				"nav-about": "Über uns",
+				"nav-details": "Details",
+				"nav-wishlist": "Wunschliste",
+				"nav-rsvp": "RSVP",
+				"banner-title": "Franz & Svitlana Hochzeit",
+				"banner-date": "14. Juni 2025 | München, Deutschland",
+				"banner-greeting": "Wir freuen uns, Sie an unserem besonderen Tag begrüßen zu dürfen!",
+				"about-title": "Unsere Geschichte",
+                "franz-description": "Franz: IT-Spezialist mit Liebe zu Technik, Reisen und Kochen",
+                "svitlana-description": "Svitlana: Eine leidenschaftliche kreative Person, die Kunst, Natur und Tanz liebt",
+				"about-story": "Wir haben uns vor drei Jahren kennengelernt, und seitdem ist unser Leben besser, heller und glücklicher geworden. Jetzt sind wir bereit, einen neuen Abschnitt gemeinsam zu beginnen.",
+				"details-title": "Veranstaltungsdaten",
+				"details-date-label": "Datum:",
+				"details-date": "14. Juni 2025",
+				"details-location-label": "Ort:",
+				"details-location": "Hauptstraße 123, München",
+				"details-time-label": "Beginn:",
+				"details-time": "15:00",
+				"details-dresscode-label": "Dresscode:",
+				"details-dresscode": "Formell",
+				"wishlist-title": "Unsere Wunschliste",
+				"wishlist-intro": "Eure Anwesenheit ist bereits ein Geschenk, aber wenn ihr uns noch etwas Freude machen möchtet:",
+				"wishlist-travel": "Reisen: Gutscheine oder Unterstützung für den Flitterwochenurlaub",
+				"wishlist-appliances": "Haushaltsgeräte",
+				"wishlist-charity": "Spenden in unserem Namen",
+				"rsvp-title": "RSVP",
+				"rsvp-intro": "Bitte bestätige deine Teilnahme:",
+				"rsvp-name-label": "Dein Name:",
+				"rsvp-email-label": "E-Mail:",
+				"rsvp-guests-label": "Anzahl der Gäste:",
+				"rsvp-message-label": "Nachricht:",
+				"rsvp-submit-button": "Abschicken",
+				"footer-copyright": "&copy; 2025 Franz & Svitlana. Alle Rechte vorbehalten."
+			}
+		};
 
+		// Текущий язык
+		let currentLanguage = "ru";
+
+		// Функция для применения перевода
+		function applyTranslation(lang) {
+			for (const [key, value] of Object.entries(translations[lang])) {
+				document.getElementById(key).textContent = value;
+			}
+			currentLanguage = lang;
+			document.getElementById("language-toggle").textContent = currentLanguage === "ru" ? "DE" : "RU";
+		}
+
+		// Слушатель события для кнопки смены языка
+		document.getElementById("language-toggle").addEventListener("click", () => {
+			if (currentLanguage === "ru") {
+				applyTranslation("de");
+			} else {
+				applyTranslation("ru");
+			}
+		});
+
+		// Применяем русский язык по умолчанию
+		applyTranslation("ru");
+	</script>
 </body>
 </html>
