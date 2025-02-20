@@ -1,119 +1,428 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ru">
 <head>
 	<title>Franz & Svitlana's Wedding</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+		/* Сброс и базовые стили */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {
+			height: 100%;
+		}
+		/* Плавная прокрутка и Scroll Snap Container */
+		html {
+			scroll-behavior: smooth; /* плавная прокрутка к якорям */
+		}
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			color: #333;
+			text-align: center;
+			margin: 0;
+			overflow: hidden; /* чтобы не было прокрутки у body напрямую */
+		}
+		/*
+		 #page-wrapper будет прокручиваться самостоятельно
+		 (scroll-snap-type), занимая весь экран.
+		*/
+		#page-wrapper {
+			position: relative;
+			width: 100%;
+			height: 100vh; /* Высота окна */
+			overflow-y: scroll; /* Будем прокручивать в контейнере */
+			scroll-snap-type: y mandatory; /* Вертикальный Snap */
+			scroll-behavior: smooth; /* Плавная прокрутка колёсиком */
+			margin-top: 70px; /* Отступ, чтобы первый блок не скрывался за фиксированным header */
+		}
+
+		/* Фиксированная шапка */
+		#header {
+			background-color: #fff5e6; /* Пастельный оранжевый */
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 70px; /* Примерная высота шапки */
+			z-index: 1000;
+			padding: 0 1em;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+			#header h1 {
+				font-size: 1.5em;
+				color: #5a3e3e;
+			}
+
+			#header nav {
+				display: flex;
+				align-items: center;
+			}
+
+				#header nav a,
+				#header nav button {
+					color: #5a3e3e;
+					margin: 0 0.8em;
+					font-weight: 600;
+					border: none;
+					background: none;
+					cursor: pointer;
+					transition: color 0.2s;
+					text-decoration: none;
+				}
+
+					#header nav a:hover,
+					#header nav button:hover {
+						color: #3e2a2a;
+					}
+
+		/* Каждая секция - "слайд" на полный экран */
+		section {
+			scroll-snap-align: start; /* Каждая секция прилепляется к началу экрана */
+			width: 100%;
+			min-height: 100vh; /* Задаём минимум 100vh (учитывая, что сверху ещё шапка) */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 1em;
+		}
+
+		/* Пастельные фоны */
+		#banner {
+			background-color: #f9e7e7;
+		}
+		/* Пастельный розовый */
+		#about {
+			background-color: #e7f9f9;
+		}
+		/* Пастельный голубой */
+		#details {
+			background-color: #f9f9e7;
+		}
+		/* Пастельный желтый */
+		#schedule {
+			background-color: #f2f9e7;
+		}
+		/* Пастельный светло-зелёный */
+		#wishlist {
+			background-color: #e7e7f9;
+		}
+		/* Пастельный фиолетовый */
+		#rsvp {
+			background-color: #f9e7e7;
+		}
+		/* Пастельный розовый */
+
+		/* Баннер */
+		#banner h2 {
+			font-size: 2.5em;
+			margin-bottom: 0.5em;
+			color: #5a3e3e;
+		}
+
+		#banner p {
+			font-size: 1.2em;
+			letter-spacing: 0.1em;
+			color: #5a3e3e;
+		}
+
+		/* О нас */
+		#about {
+			color: #3e5a5a;
+		}
+
+			#about h2 {
+				font-size: 2em;
+				margin-bottom: 1em;
+			}
+
+		/* Детали */
+		#details {
+			color: #5a5a3e;
+		}
+
+			#details h2 {
+				font-size: 2em;
+				margin-bottom: 1em;
+			}
+
+			#details ul {
+				list-style: none;
+				padding: 0;
+			}
+
+				#details ul li {
+					font-size: 1.1em;
+					margin-bottom: 0.5em;
+				}
+
+		/* Программа (schedule) */
+		#schedule {
+			color: #5a5a3e;
+		}
+
+			#schedule h2 {
+				font-size: 2em;
+				margin-bottom: 1em;
+			}
+
+			#schedule ul {
+				list-style: none;
+				padding: 0;
+				font-size: 1.1em;
+				line-height: 1.8;
+				max-width: 500px;
+				margin: 0 auto;
+			}
+
+		/* Вишлист */
+		#wishlist {
+			color: #3e3e5a;
+		}
+
+			#wishlist h2 {
+				font-size: 2em;
+				margin-bottom: 1em;
+			}
+
+			#wishlist ul {
+				list-style: none;
+				padding: 0;
+			}
+
+				#wishlist ul li {
+					font-size: 1.1em;
+					margin-bottom: 0.5em;
+				}
+
+		/* RSVP */
+		#rsvp {
+			color: #5a3e3e;
+		}
+
+			#rsvp h2 {
+				font-size: 2em;
+				margin-bottom: 1em;
+			}
+
+			#rsvp form {
+				max-width: 600px;
+				width: 100%;
+				text-align: left;
+				margin: 0 auto;
+			}
+
+			#rsvp label {
+				display: block;
+				font-size: 1.1em;
+				margin-bottom: 0.5em;
+			}
+
+			#rsvp input,
+			#rsvp textarea {
+				width: 100%;
+				padding: 0.75em;
+				margin-bottom: 1em;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+				font-size: 1em;
+			}
+
+			#rsvp button {
+				background-color: #5a3e3e;
+				color: #fff;
+				padding: 0.75em 2em;
+				border: none;
+				border-radius: 3px;
+				font-size: 1em;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+			}
+
+				#rsvp button:hover {
+					background-color: #3e2a2a;
+				}
+
+		/* Адаптивность */
+		@media screen and (max-width: 768px) {
+			#header h1 {
+				font-size: 1.2em;
+			}
+
+			#header nav a,
+			#header nav button {
+				font-size: 0.9em;
+				margin: 0 0.5em;
+			}
+
+			#banner h2 {
+				font-size: 2em;
+			}
+
+			#banner p {
+				font-size: 1em;
+			}
+
+			section {
+				padding: 2em 1em;
+			}
+
+			#rsvp form {
+				padding: 0 1em;
+			}
+
+			#schedule ul {
+				font-size: 1em;
+			}
+		}
+	</style>
 </head>
-<body class="landing">
-	<!-- Page Wrapper -->
+
+<body>
+	<!-- Фиксированная шапка -->
+	<header id="header">
+		<h1 id="header-title">Franz & Svitlana</h1>
+		<nav>
+			<a href="#about" id="nav-about">О нас</a>
+			<a href="#details" id="nav-details">Детали</a>
+			<a href="#schedule" id="nav-schedule">Программа</a>
+			<a href="#wishlist" id="nav-wishlist">Вишлист</a>
+			<a href="#rsvp" id="nav-rsvp">RSVP</a>
+			<button id="language-toggle">DE</button>
+		</nav>
+	</header>
+
+	<!-- Page Wrapper с прокруткой (Scroll Snap) -->
 	<div id="page-wrapper">
-		<!-- Header -->
-		<header id="header" class="alt">
-			<h1 id="header-title">Franz & Svitlana</h1>
-			<nav>
-				<a href="#about" id="nav-about">О нас</a>
-				<a href="#details" id="nav-details">Детали</a>
-				<a href="#wishlist" id="nav-wishlist">Вишлист</a>
-				<a href="#rsvp" id="nav-rsvp">RSVP</a>
-				<button id="language-toggle">DE</button> <!-- Кнопка для смены языка -->
-			</nav>
-		</header>
-		<!-- Banner -->
+		<!-- Баннер (1-й блок) -->
 		<section id="banner">
-			<div class="inner">
-				<h2 id="banner-title">Franz & Svitlana Wedding</h2>
-				<p id="banner-date">14 июня 2025 года | Мюнхен, Германия</p>
-				<p id="banner-greeting">Мы будем рады видеть вас на нашем особенном дне!</p>
-			</div>
+			<h2 id="banner-title">Franz & Svitlana Wedding</h2>
+			<p id="banner-date">14 июня 2025 года | Мюнхен, Германия</p>
+			<p id="banner-greeting">Мы будем рады видеть вас на нашем особенном дне!</p>
 		</section>
-		<!-- About Us -->
-		<section id="about" class="wrapper style1">
-			<div class="inner">
-				<h2 id="about-title">Наша История</h2>
-				<p><strong id="franz-description">Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.</p>
-				<p><strong id="svitlana-description">Света: Увлеченная творческая личность, которая любит искусство, природу и танцы.</p>
-				<p id="about-story">Мы встретились три года назад, и с тех пор наши жизни стали лучше, светлее и счастливее. Теперь мы готовы начать новый этап вместе.</p>
-			</div>
+
+		<!-- О нас (2-й блок) -->
+		<section id="about">
+			<h2 id="about-title">Наша История</h2>
+			<p>
+				<strong id="franz-description">
+					Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.
+				</strong>
+			</p>
+			<p>
+				<strong id="svitlana-description">
+					Света: Увлеченная творческая личность, которая любит искусство, природу и танцы.
+				</strong>
+			</p>
+			<p id="about-story">
+				Мы встретились три года назад, и с тех пор наши жизни стали лучше,
+				светлее и счастливее. Теперь мы готовы начать новый этап вместе.
+			</p>
 		</section>
-		<!-- Wedding Details -->
-		<section id="details" class="wrapper style2">
-			<div class="inner">
-				<h2 id="details-title">Детали Мероприятия</h2>
-				<ul>
-					<li><strong id="details-date-label">Дата:</strong> <span id="details-date">14 июня 2025 года</span></li>
-					<li><strong id="details-location-label">Место:</strong> <span id="details-location">Hauptstraße 123, Мюнхен</span></li>
-					<li><strong id="details-time-label">Начало:</strong> <span id="details-time">15:00</span></li>
-					<li><strong id="details-dresscode-label">Дресс-код:</strong> <span id="details-dresscode">Формальный</span></li>
-				</ul>
-			</div>
-		</section>
-		<!-- Wishlist -->
-		<section id="wishlist" class="wrapper style3">
-			<div class="inner">
-				<h2 id="wishlist-title">Наш Вишлист</h2>
-				<p id="wishlist-intro">Ваше присутствие — это уже подарок, но если вы хотите нас порадовать:</p>
-				<ul>
-					<li id="wishlist-travel">Путешествия: ваучеры или помощь в медовом месяце</li>
-					<li id="wishlist-appliances">Домашняя техника</li>
-					<li id="wishlist-charity">Благотворительные пожертвования от нашего имени</li>
-				</ul>
-			</div>
-		</section>
-		<!-- RSVP -->
-		<section id="rsvp" class="wrapper style4">
-			<div class="inner">
-				<h2 id="rsvp-title">RSVP</h2>
-				<p id="rsvp-intro">Пожалуйста, подтвердите свое присутствие:</p>
-				<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-					<label for="name"><span id="rsvp-name-label">Ваше имя:</span></label>
-					<input type="text" id="name" name="name" required>
-					<label for="email"><span id="rsvp-email-label">Email:</span></label>
-					<input type="email" id="email" name="email" required>
-					<label for="guests"><span id="rsvp-guests-label">Количество гостей:</span></label>
-					<input type="number" id="guests" name="guests" required>
-					<label for="message"><span id="rsvp-message-label">Сообщение:</span></label>
-					<textarea id="message" name="message" rows="4"></textarea>
-					<button type="submit" class="button" id="rsvp-submit-button">Отправить</button>
-				</form>
-			</div>
-		</section>
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="icons">
-				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+
+		<!-- Детали (3-й блок) -->
+		<section id="details">
+			<h2 id="details-title">Детали Мероприятия</h2>
+			<ul>
+				<li><strong id="details-date-label">Дата:</strong> <span id="details-date">14 июня 2025 года</span></li>
+				<li><strong id="details-location-label">Место:</strong> <span id="details-location">Hauptstraße 123, Мюнхен</span></li>
+				<li><strong id="details-time-label">Начало:</strong> <span id="details-time">15:00</span></li>
+				<li><strong id="details-dresscode-label">Дресс-код:</strong> <span id="details-dresscode">Формальный</span></li>
 			</ul>
-			<p id="footer-copyright">&copy; 2025 Franz & Svitlana. Все права защищены.</p>
-		</footer>
+		</section>
+
+		<!-- Программа (4-й блок) -->
+		<section id="schedule">
+			<h2 id="schedule-title">Программа</h2>
+			<ul>
+				<li id="schedule-15">15:00 — встречаемся</li>
+				<li id="schedule-16">16:00 — Церемония</li>
+				<li id="schedule-1630">16:30 — Подарки</li>
+				<li id="schedule-18">18:00 — Танец</li>
+				<li id="schedule-1830">18:30 — Ужин в ресторане</li>
+				<li id="schedule-19">19:00 — Развлекательная программа</li>
+				<li id="schedule-23">23:00 — конец мероприятия</li>
+			</ul>
+		</section>
+
+		<!-- Вишлист (5-й блок) -->
+		<section id="wishlist">
+			<h2 id="wishlist-title">Наш Вишлист</h2>
+			<p id="wishlist-intro">Ваше присутствие — это уже подарок, но если вы хотите нас порадовать:</p>
+			<ul>
+				<li id="wishlist-travel">Путешествия: ваучеры или помощь в медовом месяце</li>
+				<li id="wishlist-appliances">Домашняя техника</li>
+				<li id="wishlist-charity">Благотворительные пожертвования от нашего имени</li>
+			</ul>
+		</section>
+
+		<!-- RSVP (6-й блок): теперь отправка через mailto -->
+		<section id="rsvp">
+			<h2 id="rsvp-title">RSVP</h2>
+			<p id="rsvp-intro">Пожалуйста, подтвердите свое присутствие:</p>
+			<!-- Убираем action и method, используем onsubmit -->
+			<form onsubmit="sendEmail(event)">
+				<label for="name"><span id="rsvp-name-label">Ваше имя:</span></label>
+				<input type="text" id="name" name="name" required />
+
+				<label for="email"><span id="rsvp-email-label">Email:</span></label>
+				<input type="email" id="email" name="email" required />
+
+				<label for="guests"><span id="rsvp-guests-label">Количество гостей:</span></label>
+				<input type="number" id="guests" name="guests" required />
+
+				<label for="message"><span id="rsvp-message-label">Сообщение:</span></label>
+				<textarea id="message" name="message" rows="4"></textarea>
+
+				<button type="submit" class="button" id="rsvp-submit-button">Отправить</button>
+			</form>
+		</section>
 	</div>
-	<!-- Scripts -->
+
 	<script>
-		// Переводы
+		// Объект переводов
 		const translations = {
 			ru: {
 				"header-title": "Franz & Svitlana",
 				"nav-about": "О нас",
 				"nav-details": "Детали",
+				"nav-schedule": "Программа",
 				"nav-wishlist": "Вишлист",
 				"nav-rsvp": "RSVP",
-				"banner-title": "Franz & Svitlana Wedding",
-				"banner-date": "14 июня 2025 года | Мюнхен, Германия",
+				"banner-title": "Свадьба Светланы и Франца",
+				"banner-date": "31 Мая 2025 года | Мюнхен, Германия",
 				"banner-greeting": "Мы будем рады видеть вас на нашем особенном дне!",
 				"about-title": "Наша История",
-                "franz-description": "Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.",
-                "svitlana-description": "Света: Увлеченная творческая личность, которая любит искусство, природу и танцы",
+				"franz-description": "Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.",
+				"svitlana-description": "Света: Увлеченная творческая личность, которая любит искусство, природу и танцы.",
 				"about-story": "Мы встретились три года назад, и с тех пор наши жизни стали лучше, светлее и счастливее. Теперь мы готовы начать новый этап вместе.",
 				"details-title": "Детали Мероприятия",
 				"details-date-label": "Дата:",
-				"details-date": "14 июня 2025 года",
+				"details-date": "31 мая 2025 года",
 				"details-location-label": "Место:",
-				"details-location": "Hauptstraße 123, Мюнхен",
+				"details-location": "Zielstattstraße 6, 81379 München",
 				"details-time-label": "Начало:",
 				"details-time": "15:00",
 				"details-dresscode-label": "Дресс-код:",
 				"details-dresscode": "Формальный",
+				"schedule-title": "Программа",
+				"schedule-15": "15:00 — встречаемся",
+				"schedule-16": "16:00 — Церемония",
+				"schedule-1630": "16:30 — Подарки",
+				"schedule-18": "18:00 — Танец",
+				"schedule-1830": "18:30 — Ужин в ресторане",
+				"schedule-19": "19:00 — Развлекательная программа",
+				"schedule-23": "23:00 — конец мероприятия",
 				"wishlist-title": "Наш Вишлист",
 				"wishlist-intro": "Ваше присутствие — это уже подарок, но если вы хотите нас порадовать:",
 				"wishlist-travel": "Путешествия: ваучеры или помощь в медовом месяце",
@@ -125,31 +434,39 @@
 				"rsvp-email-label": "Email:",
 				"rsvp-guests-label": "Количество гостей:",
 				"rsvp-message-label": "Сообщение:",
-				"rsvp-submit-button": "Отправить",
-				"footer-copyright": "&copy; 2025 Franz & Svitlana. Все права защищены."
+				"rsvp-submit-button": "Отправить"
 			},
 			de: {
 				"header-title": "Franz & Svitlana",
 				"nav-about": "Über uns",
 				"nav-details": "Details",
+				"nav-schedule": "Ablauf",
 				"nav-wishlist": "Wunschliste",
 				"nav-rsvp": "RSVP",
 				"banner-title": "Franz & Svitlana Hochzeit",
-				"banner-date": "14. Juni 2025 | München, Deutschland",
+				"banner-date": "31. Mai 2025 | München, Deutschland",
 				"banner-greeting": "Wir freuen uns, Sie an unserem besonderen Tag begrüßen zu dürfen!",
 				"about-title": "Unsere Geschichte",
-                "franz-description": "Franz: IT-Spezialist mit Liebe zu Technik, Reisen und Kochen",
-                "svitlana-description": "Svitlana: Eine leidenschaftliche kreative Person, die Kunst, Natur und Tanz liebt",
+				"franz-description": "Franz: IT-Spezialist mit Liebe zu Technik, Reisen und Kochen.",
+				"svitlana-description": "Svitlana: Eine leidenschaftliche kreative Person, die Kunst, Natur und Tanz liebt.",
 				"about-story": "Wir haben uns vor drei Jahren kennengelernt, und seitdem ist unser Leben besser, heller und glücklicher geworden. Jetzt sind wir bereit, einen neuen Abschnitt gemeinsam zu beginnen.",
 				"details-title": "Veranstaltungsdaten",
 				"details-date-label": "Datum:",
-				"details-date": "14. Juni 2025",
+				"details-date": "31. Mai 2025",
 				"details-location-label": "Ort:",
-				"details-location": "Hauptstraße 123, München",
+				"details-location": "Zielstattstraße 6, 81379 München",
 				"details-time-label": "Beginn:",
 				"details-time": "15:00",
 				"details-dresscode-label": "Dresscode:",
 				"details-dresscode": "Formell",
+				"schedule-title": "Tagesablauf",
+				"schedule-15": "15:00 — Treffen",
+				"schedule-16": "16:00 — Zeremonie",
+				"schedule-1630": "16:30 — Geschenke",
+				"schedule-18": "18:00 — Tanz",
+				"schedule-1830": "18:30 — Restaurant",
+				"schedule-19": "19:00 — Unterhaltungsprogramm",
+				"schedule-23": "23:00 — Ende",
 				"wishlist-title": "Unsere Wunschliste",
 				"wishlist-intro": "Eure Anwesenheit ist bereits ein Geschenk, aber wenn ihr uns noch etwas Freude machen möchtet:",
 				"wishlist-travel": "Reisen: Gutscheine oder Unterstützung für den Flitterwochenurlaub",
@@ -161,8 +478,7 @@
 				"rsvp-email-label": "E-Mail:",
 				"rsvp-guests-label": "Anzahl der Gäste:",
 				"rsvp-message-label": "Nachricht:",
-				"rsvp-submit-button": "Abschicken",
-				"footer-copyright": "&copy; 2025 Franz & Svitlana. Alle Rechte vorbehalten."
+				"rsvp-submit-button": "Abschicken"
 			}
 		};
 
@@ -172,23 +488,45 @@
 		// Функция для применения перевода
 		function applyTranslation(lang) {
 			for (const [key, value] of Object.entries(translations[lang])) {
-				document.getElementById(key).textContent = value;
+				const el = document.getElementById(key);
+				if (el) {
+					el.textContent = value;
+				}
 			}
 			currentLanguage = lang;
-			document.getElementById("language-toggle").textContent = currentLanguage === "ru" ? "DE" : "RU";
+			document.getElementById("language-toggle").textContent = (currentLanguage === "ru") ? "DE" : "RU";
 		}
 
-		// Слушатель события для кнопки смены языка
 		document.getElementById("language-toggle").addEventListener("click", () => {
-			if (currentLanguage === "ru") {
-				applyTranslation("de");
-			} else {
-				applyTranslation("ru");
-			}
+			applyTranslation(currentLanguage === "ru" ? "de" : "ru");
 		});
-
-		// Применяем русский язык по умолчанию
 		applyTranslation("ru");
+
+		// Функция для отправки на mailto:
+		function sendEmail(e) {
+			e.preventDefault(); // Останавливаем обычную отправку формы
+
+			// Считываем значения полей
+			const name = document.getElementById('name').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const guests = document.getElementById('guests').value.trim();
+			const message = document.getElementById('message').value.trim();
+
+			// Формируем тему и текст письма
+			const subject = encodeURIComponent('RSVP');
+			const body = encodeURIComponent(
+				'Имя: ' + name + '\n' +
+				'Email: ' + email + '\n' +
+				'Количество гостей: ' + guests + '\n' +
+				'Сообщение: ' + message
+			);
+
+			// Формируем ссылку mailto
+			const mailtoLink = `mailto:franz1resch@yahoo.com?subject=${subject}&body=${body}`;
+
+			// Открываем почтовый клиент
+			window.location.href = mailtoLink;
+		}
 	</script>
 </body>
 </html>
