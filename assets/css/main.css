@@ -79,16 +79,52 @@ p {
 	}
 
 /* О нас */
-#about {
-	background-color: #e7f9f9; /* Пастельный голубой */
-	padding: 4em 0;
-	color: #3e5a5a;
+/* Общие стили для всех секций */
+section {
+	scroll-snap-align: start; /* если используете scroll-snap */
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2em;
+	box-sizing: border-box;
 }
 
-	#about h2 {
-		font-size: 2em;
-		margin-bottom: 1em;
-	}
+/* Секция про Франца */
+.about-wrapper {
+	display: flex;
+	align-items: flex-start; /* Выравнивание по верхним границам или как вам удобнее */
+	justify-content: center; /* Или space-between, зависит от желаемого расположения */
+	gap: 2em; /* Промежуток между картинкой и текстом */
+	max-width: 1200px; /* Желательно ограничить ширину, чтобы контент не растягивался */
+	margin: 0 auto; /* Чтобы центрировать сам блок на странице */
+	padding: 2em; /* Отступы внутри секции, по желанию */
+}
+
+#franz-image {
+	max-width: 400; /* или любая другая фиксированная или относительная ширина */
+	height: 400; /* сохранять пропорции */
+	display: block; /* убираем лишние отступы */
+}
+
+.about-text {
+	/* Здесь стили для текста — например, можно задать ширину */
+	flex: 1; /* чтобы текст занимал оставшееся место */
+}
+
+
+/* Секция про Свитлану */
+#about-svitlana {
+	background-color: #f9f9e7; /* Можно другой пастельный цвет */
+}
+
+/* Секция про вашу общую историю */
+#about-us {
+	background-color: #f9e7e7; /* Ещё один пастельный */
+}
+
 
 /* Детали мероприятия */
 #details {

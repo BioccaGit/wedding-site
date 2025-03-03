@@ -137,14 +137,53 @@
 		}
 
 		/* О нас */
-		#about {
-			color: #3e5a5a;
-		}
+        #about-franz {
+            /* Задаём фон картинки */
+			position: relative;
+            background-image: url("images/Franz-Standing-alone.png");
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: cover;
+            /* cover - чтобы фон обрезался, но занимал всю ширину контейнера */
+            /* Размер самой секции (по высоте) */
+            min-height: 100vh; /* например, на полный экран */
+            /* Или фиксированная высота, если не нужно во всю высоту */
+            /* min-height: 600px; */
+            /* Цвет текста или фона поверх, если нужно */
+            color: #fff;
+            /* Добавьте, например, полупрозрачный фон для читаемости текста */
+            /* padding, margin... по вкусу */
+        }
 
-			#about h2 {
-				font-size: 2em;
-				margin-bottom: 1em;
-			}
+        .about-text {
+            /* Если хотите, чтобы текст располагался, например, по центру или снизу */
+            /* Можно использовать позиционирование, флексы или что-то ещё */
+            position: absolute; /* Абсолютное позиционирование */
+            bottom: 0; /* Прижать к нижней границе родителя */
+            left: 0; /* Прижать к левой границе */
+            margin: 1em; /* Отступы от краёв, чтобы текст не прилипал */
+            padding: 1em; /* Внутренние отступы блока с текстом */
+            max-width: 900px; /* Чтобы текст не растягивался слишком широко */
+            font-size: 1.3em; /* Увеличиваем размер шрифта (относительно стандартного 16px) */
+            color: #fff; /* Чтобы текст был виден на тёмном фоне */
+            background: rgba(0,0,0,0.5); /* Полупрозрачная подложка, если нужно */
+            box-sizing: border-box; /* На всякий случай */
+            background: rgba(0,0,0,0.3); /* тёмная подложка с 30% прозрачности */
+            backdrop-filter: blur(6px); /* «размытие» фона позади элемента */
+            -webkit-backdrop-filter: blur(6px); /* Для Safari */
+        }
+
+
+
+        /* Секция про Свитлану */
+        #about-svitlana {
+            background-color: #f9f9e7; /* Можно другой пастельный цвет */
+        }
+
+        /* Секция про вашу общую историю */
+        #about-us {
+            background-color: #f9e7e7; /* Ещё один пастельный */
+        }
 
 		/* Детали */
 		#details {
@@ -293,7 +332,7 @@
 	<header id="header">
 		<h1 id="header-title">Franz & Svitlana</h1>
 		<nav>
-			<a href="#about" id="nav-about">О нас</a>
+			<a href="#about-franz" id="nav-about">О нас</a>
 			<a href="#details" id="nav-details">Детали</a>
 			<a href="#schedule" id="nav-schedule">Программа</a>
 			<a href="#wishlist" id="nav-wishlist">Вишлист</a>
@@ -312,23 +351,26 @@
 		</section>
 
 		<!-- О нас (2-й блок) -->
-		<section id="about">
-			<h2 id="about-title">Наша История</h2>
-			<p>
-				<strong id="franz-description">
-					Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии.
-				</strong>
+		<section id="about-franz">
+			<div class="about-text">
+				<h2 id="franz-heading">Про Франца</h2>
+				<p id="franz-description">
+					Франц: IT-специалист с любовью к технологиям, путешествиям и кулинарии...
+				</p>
+			</div>
+		</section>
+
+
+		<section id="about-svitlana">
+			<h2 id="svitlana-heading">Про Свитлану</h2>
+			<p id="svitlana-description">
+				Света: увлеченная творческая личность, которая любит искусство, природу и танцы.
 			</p>
-			<h2></h2>
-			<p>
-				<strong id="svitlana-description">
-					Света: Увлеченная творческая личность, которая любит искусство, природу и танцы.
-				</strong>
-			</p>
-			<h2></h2>
+		</section>
+		<section id="about-us">
+			<h2 id="about-us-heading">Про нас</h2>
 			<p id="about-story">
-				Мы встретились три года назад, и с тех пор наши жизни стали лучше,
-				светлее и счастливее. Теперь мы готовы начать новый этап вместе.
+				Мы встретились три года назад, и с тех пор наши жизни стали лучше, светлее и счастливее...
 			</p>
 		</section>
 
@@ -400,12 +442,18 @@
 				"nav-schedule": "Программа",
 				"nav-wishlist": "Вишлист",
 				"nav-rsvp": "RSVP",
-				"banner-title": "Свадьба Свiтланы и Франца",
+				"banner-title": "Svitlana & Franz Wedding",
 				"banner-date": "31 Мая 2025 года | Мюнхен, Германия",
 				"banner-greeting": "Мы будем рады видеть вас на нашем особенном дне!",
 				"about-title": "Наша История",
-                "franz-description": "Франц: настоящий романтик с большим сердцем. Он с лёгкостью объединяет вокруг себя людей, создавая ощущение единства и дружбы. Его спокойная уверенность и верность принципам делают его надёжной опорой для тех, кто находится рядом. Франц обожает открывать новое в окружающем мире, всегда ищет вдохновение и не боится следовать за мечтами. Его искренность и доброта неизменно вызывают уважение и доверие.",
-                "svitlana-description": "Свiтлана: искренняя, жизнерадостная и заботливая. Она всегда готова помочь и поддержать друзей и близких, благодаря чему вокруг неё царит атмосфера тепла и уюта. Её оптимизм вдохновляет окружающих, а тонкое чувство юмора помогает находить радость в самых простых вещах. Свитлана умеет наслаждаться жизнью и ценит каждое мгновение, проводимое с семьёй и друзьями.",
+				"franz-heading": "Franz",
+				"svitlana-heading": "Svitlana",
+                "franz-description": "Franz",
+				"svitlana-description": "Svitlana",
+				"about-us-heading": "Про нас",
+                "about-story": "О нас",
+                "franz-description": "Настоящий романтик с большим сердцем. Он с лёгкостью объединяет вокруг себя людей, создавая ощущение единства и дружбы. Его спокойная уверенность и верность принципам делают его надёжной опорой для тех, кто находится рядом. Франц обожает открывать новое в окружающем мире, всегда ищет вдохновение и не боится следовать за мечтами. Его искренность и доброта неизменно вызывают уважение и доверие.",
+                "svitlana-description": "Svitlana: искренняя, жизнерадостная и заботливая. Она всегда готова помочь и поддержать друзей и близких, благодаря чему вокруг неё царит атмосфера тепла и уюта. Её оптимизм вдохновляет окружающих, а тонкое чувство юмора помогает находить радость в самых простых вещах. Свитлана умеет наслаждаться жизнью и ценит каждое мгновение, проводимое с семьёй и друзьями.",
                 "about-story": "Наша история началась в «дайвинчике», где мы случайно пересеклись и сразу почувствовали, что между нами что-то особенное.\nПервое свидание устроили на Маринплац — прогулялись по оживлённой площади, наслаждаясь общением и городской атмосферой.\nЗатем решили перекусить и направились в Ботанический сад за шаурмой. Именно там к нам подошёл немного нетрезвый мужчина, который говорил и по-немецки, и по-русски, но не слишком уверенно. Он включил песню «Чёрные глаза» и, пританцовывая, стал предсказывать нам прекрасное будущее и желать хороших детей. Мы тогда от души посмеялись, но эти забавные пожелания вдруг показались пророческими.\nСо временем мы съехались, а потом колесили по всей Германии — посетили множество городов, открывая для себя новые места и впечатления. В какой-то момент в нашей жизни появился кот по имени Аска, который внёс ещё больше уюта в наш дом. Мы переехали в замечательный район, где чувствуем себя как дома и продолжаем вместе строить нашу счастливую историю. И кто знает, может быть, предсказания того самого весёлого незнакомца в Ботаническом саду в итоге сбудутся на все сто!",
 				"details-title": "Детали Мероприятия",
 				"details-date-label": "Дата:",
@@ -437,7 +485,7 @@
 				"rsvp-submit-button": "Отправить"
 			},
 			de: {
-				"header-title": "Franz & Svitlana",
+                "banner-title": "Svitlana & Franz Wedding",
 				"nav-about": "Über uns",
 				"nav-details": "Details",
 				"nav-schedule": "Ablauf",
@@ -447,6 +495,12 @@
 				"banner-date": "31. Mai 2025 | München, Deutschland",
 				"banner-greeting": "Wir freuen uns, Sie an unserem besonderen Tag begrüßen zu dürfen!",
 				"about-title": "Unsere Geschichte",
+                "svitlana-heading": "Svitlana",
+                "franz-description": "Franz",
+                "franz-description": "Franz",
+                "svitlana-description": "Svitlana",
+				"about-story": "Über uns",
+                "about-us-heading": "Über uns",
                 "franz-description": "Franz: ist ein echter Romantiker mit einem großen Herzen. Mit seiner offenen Art vereint er mühelos Menschen um sich herum und verbreitet ein Gefühl von Zusammengehörigkeit und Freundschaft. Seine ruhige Zuversicht und die Treue zu seinen Prinzipien machen ihn zu einer verlässlichen Stütze für alle, die ihm nahestehen. Franz liebt es, neue Dinge zu entdecken, findet überall Inspiration und scheut sich nicht, seinen Träumen zu folgen. Seine Aufrichtigkeit und Herzlichkeit wecken stets Vertrauen und Respekt.",
                 "svitlana-description": "Svitlana: ist aufrichtig, lebensfroh und fürsorglich. Sie ist stets bereit, Freunden und Familie zu helfen und sie zu unterstützen, wodurch sie eine warme, einladende Atmosphäre um sich schafft. Ihr Optimismus inspiriert andere, und ihr feiner Sinn für Humor hilft dabei, in den einfachsten Dingen die Freude zu entdecken. Svitlana genießt das Leben in vollen Zügen und schätzt jede Minute, die sie mit ihren Liebsten verbringt.",
                 "about-story": "Unsere Geschichte begann im „Daivintschik“, wo wir uns zufällig begegneten und sofort spürten, dass da etwas ganz Besonderes zwischen uns ist.\n Unser erstes Date führte uns zum Marienplatz – wir schlenderten durch die belebte Gegend und genossen die fröhliche Stadtatmosphäre. Anschließend machten wir uns auf den Weg in den Botanischen Garten, um dort Shawarma zu essen. Genau an diesem Ort trat ein leicht angetrunkener Mann an uns heran, der sowohl Deutsch als auch Russisch sprach, allerdings nicht besonders gut.\n Er spielte das Lied „Tschornyje Glasa“ (auf Deutsch „Schwarze Augen“) ab, tanzte ein wenig dazu und prophezeite uns eine wundervolle Zukunft und viele Kinder. Wir mussten herzlich lachen, aber diese ungewöhnliche Begegnung fühlte sich schon fast wie ein gutes Omen an.Mit der Zeit zogen wir zusammen, bereisten halb Deutschland und lernten dabei zahlreiche Städte kennen.\nIrgendwann stieß dann unser Kater Aska zu uns und sorgte für noch mehr Gemütlichkeit in unserem Zuhause.Schließlich sind wir in einen wunderschönen Stadtteil umgezogen, in dem wir uns sofort heimisch fühlten.Und so setzen wir unsere gemeinsame Geschichte fort – voller Liebe, Abenteuer und vielleicht auch ein bisschen von der Magie jener lustigen Begegnung im Botanischen Garten.",
